@@ -155,7 +155,7 @@ async def main(url):
                                 '''
 
         # OpenAI API call for advice (on the combined data)
-        client = openai.AsyncOpenAI(api_key=os.getenv("SECRET_KEY"))
+        client = openai.AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         response = await client.chat.completions.create(
             model="gpt-4o",
             messages=[{"role": "system", "content": "You are a helpful and highly - detailed web performance optimization expert."},
