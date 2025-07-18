@@ -1,8 +1,7 @@
 import asyncio
-from openai import OpenAI
+import openai 
 import os 
 from playwright.async_api import async_playwright
-from dotenv import load_dotenv, dotenv_values 
 
 
 
@@ -157,13 +156,13 @@ async def main(url):
                                 '''
 
         # OpenAI API call for advice (on the combined data)
-        load_dotenv()
-        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        response = await client.chat.completions.create(
-            model="gpt-4o",
-            messages=[{"role": "system", "content": "You are a helpful and highly - detailed web performance optimization expert."},
-                      {"role": "user", "content": performance_report}]
-        )
+        openai.api_key = os.getenv("OPENAI_API_KEY")
+        response = await asyncio.to_thread(
+        openai.ChatCompletion.create,
+        model="gpt-4", 
+        messages=[
+            {"role": "system", "content": "You are a helpful web performance optimization expert."},
+            {"role": "user", "content": performance_report}])
         print(f"Optimization Advice:\n", response.choices[0].message.content)
 
         
