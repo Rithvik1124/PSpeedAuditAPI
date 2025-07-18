@@ -4,3 +4,4 @@ openai
 playwright
 python-docx
 python-multipart
+python-dotenv
