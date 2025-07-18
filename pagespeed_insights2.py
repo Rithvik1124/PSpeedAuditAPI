@@ -1,5 +1,5 @@
 import asyncio
-import openai
+from openai import OpenAI
 import os 
 from playwright.async_api import async_playwright
 from dotenv import load_dotenv, dotenv_values 
