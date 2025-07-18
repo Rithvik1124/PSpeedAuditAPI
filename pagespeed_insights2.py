@@ -2,6 +2,8 @@ import asyncio
 import openai
 import os 
 from playwright.async_api import async_playwright
+from dotenv import load_dotenv, dotenv_values 
+
 
 
 async def extract_performance_data(page,mode):
@@ -155,6 +157,7 @@ async def main(url):
                                 '''
 
         # OpenAI API call for advice (on the combined data)
+        load_dotenv()
         client = openai.AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         response = await client.chat.completions.create(
             model="gpt-4o",
