@@ -162,7 +162,7 @@ async def main(url):
         model="gpt-4", 
         messages=[
             {"role": "system", "content": "You are a helpful web performance optimization expert."},
-            {"role": "user", "content": performance_report}],max_tokens=10_000)
+            {"role": "user", "content": performance_report}],max_tokens=10000)
         print(f"Optimization Advice:\n", response.choices[0].message.content)
 
         
